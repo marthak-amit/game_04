@@ -1,5 +1,7 @@
 # Gravity Drift
 
+One-tap orbital slingshot. **100 levels in 5 worlds** (candy-style level map, 3-star ratings, boss levels, chests, world rewards) plus Endless and a seeded Daily Challenge.
+
 One-tap orbital slingshot. Orbit a planet, **tap to launch**, catch the next one. Dodge asteroids and black holes,
 collect stardust, chain fast landings into combos. Endless, with a seeded **Daily Challenge**.
 

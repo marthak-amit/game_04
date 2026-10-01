@@ -25,6 +25,9 @@
     <div id="mult"></div>
     <div id="shieldIcon" class="hidden">🛡</div>
     <div id="hint"></div>
+    <div id="prog" class="hidden"><i></i></div>
+    <div id="obj" class="hidden"></div>
+    <div id="banner"></div>
   </div>
 
   <!-- MENU -->
@@ -36,8 +39,11 @@
     <div class="logo">GRAVITY<span>DRIFT</span></div>
     <div class="tag">Tap to slingshot between worlds</div>
     <div class="menu-btns">
-      <button class="btn primary big" data-act="play">PLAY</button>
-      <button class="btn daily" data-act="daily">🔥 DAILY CHALLENGE <i id="dailyBadge" class="dot hidden"></i></button>
+      <button class="btn primary big" data-act="play" id="playLabel">PLAY</button>
+      <div class="row">
+        <button class="btn" data-act="endless">∞ Endless</button>
+        <button class="btn daily" data-act="daily">🔥 Daily <i id="dailyBadge" class="dot hidden"></i></button>
+      </div>
       <div class="row">
         <button class="btn" data-act="shop">🛒 Shop</button>
         <button class="btn" data-act="missions">🎯 Missions <i id="missionBadge" class="dot hidden"></i></button>
@@ -58,14 +64,58 @@
         <div><b id="stClose">0</b><span>close calls</span></div>
       </div>
       <div class="earn">+<b id="overEarn">0</b> ✦ earned</div>
+      <div class="over-tip" id="overTip"></div>
       <button class="btn ad" id="reviveAd">▶ CONTINUE <small>watch ad</small></button>
       <button class="btn" id="reviveCoin">CONTINUE <small id="reviveCoinCost">150 ✦</small></button>
       <button class="btn ad" id="doubleAd">▶ DOUBLE COINS <small>watch ad</small></button>
-      <button class="btn primary" data-act="again">PLAY AGAIN</button>
+      <button class="btn ad hidden" id="skipAd">⏭ SKIP LEVEL <small>watch ad</small></button>
+      <button class="btn primary" data-act="again" id="againBtn">PLAY AGAIN</button>
       <div class="row">
         <button class="btn" data-act="share">📤 Challenge</button>
-        <button class="btn" data-act="home">🏠 Menu</button>
+        <button class="btn" data-act="home" id="homeBtn">🏠 Menu</button>
       </div>
+    </div>
+  </div>
+
+  <!-- LEVEL COMPLETE -->
+  <div id="win" class="screen">
+    <div id="confetti"></div>
+    <div class="panel winp">
+      <div class="win-title" id="winTitle"></div>
+      <div class="win-stars" id="winStars"><i>★</i><i>★</i><i>★</i></div>
+      <div class="win-line" id="winDust"></div>
+      <div class="win-reward">+<b id="winCoins">0</b> ✦</div>
+      <div class="chips" id="winChips"></div>
+      <div class="win-nudge" id="winNudge"></div>
+      <div class="mile"><div id="mileTxt"></div><div class="bar"><i id="mileBar"></i></div></div>
+      <button class="btn primary big" id="nextBtn">NEXT LEVEL ▶</button>
+      <div class="next-info" id="nextInfo"></div>
+      <button class="btn ad" id="winDouble">▶ 2× COINS <small>watch ad</small></button>
+      <div class="row">
+        <button class="btn" id="winReplay">↻ Replay for ★</button>
+        <button class="btn" data-act="map">🗺 Map</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVEL MAP -->
+  <div id="map" class="screen">
+    <div id="mapScroll"><div id="mapInner"></div></div>
+    <div class="map-top">
+      <button class="x" data-act="close" aria-label="Back">‹</button>
+      <div class="chip">★ <b id="mapStars">0</b></div>
+      <div class="chip coin">✦ <b id="mapCoins">0</b></div>
+    </div>
+    <button class="btn primary big" id="mapPlay">PLAY</button>
+  </div>
+  <div id="levelInfo" class="screen">
+    <div class="panel small">
+      <div class="panel-head"><h2 id="infoTitle"></h2><button class="x" data-act="closeInfo">✕</button></div>
+      <div class="muted" id="infoWorld"></div>
+      <div class="info-obj" id="infoObj"></div>
+      <div id="infoStars"></div>
+      <div class="muted" id="infoHaz"></div>
+      <button class="btn primary big" id="infoPlay">▶ PLAY</button>
     </div>
   </div>
 
