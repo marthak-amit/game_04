@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#070b24">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Gravity Drift</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="c"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-dust">✦ <span id="hudDust">0</span></div>
+      <button id="pauseBtn" aria-label="Pause">❚❚</button>
+    </div>
+    <div id="score">0</div>
+    <div id="mult"></div>
+    <div id="shieldIcon" class="hidden">🛡</div>
+    <div id="hint"></div>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="screen show">
+    <div class="menu-top">
+      <div class="chip">🏆 <b id="menuBest">0</b></div>
+      <div class="chip coin">✦ <b id="menuCoins">0</b></div>
+    </div>
+    <div class="logo">GRAVITY<span>DRIFT</span></div>
+    <div class="tag">Tap to slingshot between worlds</div>
+    <div class="menu-btns">
+      <button class="btn primary big" data-act="play">PLAY</button>
+      <button class="btn daily" data-act="daily">🔥 DAILY CHALLENGE <i id="dailyBadge" class="dot hidden"></i></button>
+      <div class="row">
+        <button class="btn" data-act="shop">🛒 Shop</button>
+        <button class="btn" data-act="missions">🎯 Missions <i id="missionBadge" class="dot hidden"></i></button>
+        <button class="btn sq" data-act="settings" aria-label="Settings">⚙</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="over" class="screen">
+    <div class="panel">
+      <div class="over-title" id="overTitle">CRASHED</div>
+      <div class="over-score" id="overScore">0</div>
+      <div class="over-best" id="overBest"></div>
+      <div class="stats">
+        <div><b id="stPlanets">0</b><span>planets</span></div>
+        <div><b id="stDust">0</b><span>stardust</span></div>
+        <div><b id="stClose">0</b><span>close calls</span></div>
+      </div>
+      <div class="earn">+<b id="overEarn">0</b> ✦ earned</div>
+      <button class="btn ad" id="reviveAd">▶ CONTINUE <small>watch ad</small></button>
+      <button class="btn" id="reviveCoin">CONTINUE <small id="reviveCoinCost">150 ✦</small></button>
+      <button class="btn ad" id="doubleAd">▶ DOUBLE COINS <small>watch ad</small></button>
+      <button class="btn primary" data-act="again">PLAY AGAIN</button>
+      <div class="row">
+        <button class="btn" data-act="share">📤 Challenge</button>
+        <button class="btn" data-act="home">🏠 Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAUSE -->
+  <div id="pause" class="screen">
+    <div class="panel small">
+      <h2>PAUSED</h2>
+      <button class="btn primary" data-act="resume">RESUME</button>
+      <button class="btn" data-act="quit">QUIT RUN</button>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <div id="shop" class="screen">
+    <div class="panel tall">
+      <div class="panel-head"><h2>SHOP</h2><div class="chip coin">✦ <b id="shopCoins">0</b></div><button class="x" data-act="close">✕</button></div>
+      <div class="tabs">
+        <button data-tab="skins" class="on">Orbs</button>
+        <button data-tab="themes">Worlds</button>
+        <button data-tab="store">Store</button>
+      </div>
+      <div id="shopBody" class="grid"></div>
+    </div>
+  </div>
+
+  <!-- MISSIONS -->
+  <div id="missions" class="screen">
+    <div class="panel">
+      <div class="panel-head"><h2>DAILY MISSIONS</h2><button class="x" data-act="close">✕</button></div>
+      <div id="missionList"></div>
+      <div class="muted">New missions every day</div>
+    </div>
+  </div>
+
+  <!-- DAILY REWARD -->
+  <div id="reward" class="screen">
+    <div class="panel">
+      <h2>DAILY REWARD</h2>
+      <div id="rewardDays" class="days"></div>
+      <button class="btn primary" id="claimDaily">CLAIM</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settings" class="screen">
+    <div class="panel small">
+      <div class="panel-head"><h2>SETTINGS</h2><button class="x" data-act="close">✕</button></div>
+      <button class="btn toggle" data-set="sound"></button>
+      <button class="btn toggle" data-set="music"></button>
+      <button class="btn toggle" data-set="haptics"></button>
+      <button class="btn" data-act="restore">Restore purchases</button>
+    </div>
+  </div>
+
+  <!-- AD / PURCHASE overlay (demo provider; replaced by real SDK on device) -->
+  <div id="adOverlay" class="screen">
+    <div class="panel small">
+      <h2 id="adTitle">AD</h2>
+      <div id="adBody" class="muted"></div>
+      <button class="btn primary" id="adOk" disabled>…</button>
+      <button class="btn" id="adCancel">Cancel</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
