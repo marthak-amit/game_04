@@ -25,5 +25,5 @@ Pure HTML5 canvas, no dependencies, no asset files (art + audio are procedural).
 window.GameAds = { showRewarded: (placement) => Promise<boolean>, showInterstitial: () => Promise<void> };
 window.GameIAP = { purchase: (productId) => Promise<boolean>, restore: () => Promise<string[]> };
 ```
-Use `@capacitor-community/admob` for GameAds and a Play Billing plugin (e.g. RevenueCat) for GameIAP.
+Add `@capacitor-community/admob` (and set its AdMob app id in AndroidManifest) for GameAds and a Play Billing plugin (e.g. RevenueCat) for GameIAP.
 Product ids: `remove_ads`, `starter`, `coins_s`, `coins_m`, `coins_l`.
